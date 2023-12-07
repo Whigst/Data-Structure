@@ -47,7 +47,7 @@ int ScanForMin( ElementType List[], int i, int N )
     {
         if(List[result] > List[j])
         {
-            Swap(result, j);
+            result = j;
         }
     }
 
