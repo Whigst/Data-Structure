@@ -7,7 +7,8 @@
 
 #include <stdio.h>
 
-#define ElementType int                                         //Can't be set as float or double
+//#define ElementType int                                           //Can't be set as float or double
+typedef int ElementType;                                            //Best to use a typedef to create a new type name
 
 #define Swap(a, b) \
         a ^= b;    \
