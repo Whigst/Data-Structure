@@ -20,7 +20,7 @@ void SelectionSort( ElementType List[], int N );
 
 int main(void)
 {
-    ElementType List[10] = { 2, 3, 5, 3, 9, 7, 0, 11, 10, 4 };
+    ElementType List[10] = { 1, 3, 5, 3, 9, 7, 0, 11, 10, 4 };
 
     SelectionSort(List, 10);
 
