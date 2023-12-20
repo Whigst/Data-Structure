@@ -1,13 +1,13 @@
 #include <stdio.h>
 
-#define N 8
+#define N 9
 
 int Test(int a[], int start, int end);
 int Max(int a, int b, int c);
 
 int main(void)
 {
-    int a[N] = {4, -3, 5, -2, -1, 2, 6, -2};
+    int a[N] = {4, -3, 5, -2, -1, 2, 6, -2, 3};
 
     printf("%d", Test(a, 0, N - 1));
 }
@@ -21,10 +21,7 @@ int Test(int a[], int start, int end)
 
     if(start == end)
     {
-        if(a[start] >= 0)
-            return a[start];
-        else
-            return 0;
+        return a[start];
     }
 
     MaxOfLeft = Test(a, start, center);
@@ -36,6 +33,7 @@ int Test(int a[], int start, int end)
         if(Left_Sum > Max_LeftSum)
             Max_LeftSum = Left_Sum;
     }
+
     for(int j = 1; j <= end - center; j++)
     {
         Right_Sum += a[center + j];
@@ -43,7 +41,7 @@ int Test(int a[], int start, int end)
             Max_RightSum = Right_Sum;
     }
 
-    MaxOfCenter = Max_LeftSum+ Max_RightSum;
+    MaxOfCenter = Max_LeftSum + Max_RightSum;
 
     return Max(MaxOfCenter, MaxOfLeft, MaxOfRight);
 }
