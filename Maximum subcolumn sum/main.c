@@ -1,15 +1,24 @@
+/**
+ * @fileName:      main.c 
+ * @author:        QWQ534 
+ * @date:          2023-12-22 10:03:38
+ * @description:   
+ **/
 #include <stdio.h>
 
 #define N 9
 
-int Test(int a[], int start, int end);
+int Test(int a[], int start, int end);              //分而治之
+int Test2(int a[]);                                 //在线处理
 int Max(int a, int b, int c);
 
 int main(void)
 {
-    int a[N] = {4, -3, 5, -2, -1, 2, 6, -2, 3};
+    // int a[N] = {4, -3, 5, -2, -1, 2, 6, -2, 3};
+    int a[N] = {-1, -2, -3, -2, -2, -4, -5, -8, -9};
 
-    printf("%d", Test(a, 0, N - 1));
+    printf("%d\n", Test(a, 0, N - 1));
+    printf("%d\n", Test2(a));
 }
 
 int Test(int a[], int start, int end)
@@ -44,6 +53,29 @@ int Test(int a[], int start, int end)
     MaxOfCenter = Max_LeftSum + Max_RightSum;
 
     return Max(MaxOfCenter, MaxOfLeft, MaxOfRight);
+}
+
+int Test2(int a[])
+{
+    int CurrentSum, MaxSum, LastSum;
+    CurrentSum = LastSum = 0;
+    MaxSum = 0;
+    int i = 0;
+
+    for(i = 0; i < N; i++)
+    {
+        CurrentSum += a[i];
+        if(CurrentSum > MaxSum)
+        {
+            MaxSum = CurrentSum;
+        }
+        else if(CurrentSum < 0)
+        {
+            CurrentSum = 0;
+        }
+    }
+
+    return MaxSum;
 }
 
 int Max(int a, int b, int c) {
